@@ -10,7 +10,7 @@ server.connection({
 });
 
 mongoose.connect(process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL || 'mongodb://localhost/angularscaffold');
+    process.env.MONGOHQ_URL || 'mongodb://localhost/user');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
