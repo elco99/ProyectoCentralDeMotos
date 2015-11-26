@@ -19,18 +19,17 @@ angular.module('AngularScaffold.Controllers')
     $scope.productoModif.price = product.price;
     $scope.productoModif.quantity = product.quantity;
     if (product.state == true) {
-      $scope.productoModif.state = "true";    
+      $scope.productoModif.state = "true";
     }else{
       $scope.productoModif.state = "false";
     };
-    
+
   };
 
   $scope.saveProductChanges = function(){
     HomeService.SaveChanges($scope.productoModif).then(function(response){
       $scope.products = response.data;
-      console.log($scope.products);
-     
+
     }).catch(function(err){
     });
   };
@@ -38,7 +37,6 @@ angular.module('AngularScaffold.Controllers')
   $scope.getFetch=function(){
     HomeService.fetchGet().then(function(response){
       $scope.products = response.data;
-      console.log($scope.products);
     }).catch(function(err){
       alert('Error fetching users')
     });
@@ -47,7 +45,6 @@ angular.module('AngularScaffold.Controllers')
   $scope.createProduct = function(){
     HomeService.AddProduct($scope.producto).then(function(response){
     $scope.products = response.data;
-    console.log($scope.products);
   }).catch(function(err){
       alert(err + "     " + "Error creating product");
     });
