@@ -54,7 +54,7 @@ exports.updateProduct ={
 exports.CreateProduct = {
   handler: function(request, reply){
     var newProduct = new product({
-      image: request.payload.image,
+      image: request .payload.image,
       name: request.payload.name,
       description: request.payload.description,
       tags: request.payload.tags,

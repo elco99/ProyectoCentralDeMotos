@@ -15,11 +15,11 @@
             <!-- Projects Row -->
             <div ng-repeat="n in products" class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
-                    <img class ="fotoProducto" id="Foto" src={{n.image}}></img>
+                    <img ng-click="goDetail(n.image, n.name,n.description, n.price)" class ="fotoProducto" id="Foto" src={{n.image}}></img>
                     <div class="panel-heading">
 
-                        <a class="btn btn-link" ng-click="goDetail(n._id,n.name)">{{n.name}}</a>
-
+                        <a class="btn btn-link" ng-click="goDetail(n.image, n.name,n.description, n.price)">{{n.name}}</a>
+                        
                         <h3>Precio: {{n.price}}</h3>
                         <div>
                             <input type="number" min='1' max={{n.quantity}} value = "1"></input>
@@ -28,9 +28,9 @@
                     </div>
                 </div>
             </div>
-
+            
             <!-- Pagination -->
-            <div class="row text-center">
+           <!-- <div class="row text-center">
                 <div class="col-lg-12">
                     <ul class="pagination">
                         <li>
@@ -56,7 +56,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div>-->
             <!-- /.row -->
 
             <hr>
