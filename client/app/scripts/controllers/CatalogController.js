@@ -10,15 +10,14 @@ angular.module('AngularScaffold.Controllers')
   }
 
   $scope.goDetail = function(image, name, description, price){
-    $state.go('details', {content: 
+    $state.go('details', {content:
       {image: image,
       name: name,
       description:description,
       price:price}
     });
-
-
   };
+
   $scope.getCatalogo = function(){
     HomeService.GetAllProduct().then(function(response){
       $scope.products = response.data;
@@ -28,5 +27,3 @@ angular.module('AngularScaffold.Controllers')
     });
   };
 }]);
-
- 

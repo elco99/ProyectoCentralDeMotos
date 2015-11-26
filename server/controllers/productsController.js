@@ -16,6 +16,13 @@ exports.gettingFetch ={
   }
 }
 
+
+exports.SearchByTags ={
+  handler: function(request, reply){
+    var products = product.find({tags : request.payload.tags });
+    reply(products);
+  }
+}
 exports.getAllProducts = {
   handler: function(request, reply){
     var products = product.find({});
@@ -27,11 +34,16 @@ exports.getAllProducts = {
 exports.updateProduct ={
   handler: function(request,reply){
     //var products = product.update({_id: request.payload.id},{name: request.payload.name});
-    product.findById(request.payload.id,function(err,products){
 
+    product.findById(request.payload.id,function(err,products){
       products.image = request.payload.image;
+      var index = products.tags.indexOf(products.name);
+      if(index >= 0){
+        request.payload.tags.splice(index,1);
+      }
       products.name = request.payload.name;
       products.description = request.payload.description;
+      request.payload.tags.push(request.payload.name);
       products.tags = request.payload.tags;
       products.price = request.payload.price;
       products.quantity = request.payload.quantity;
@@ -43,27 +55,27 @@ exports.updateProduct ={
 
       products.save(function(err){
         if(err) throw err;
-        alert("YES")
       })
     })
-    
+
   //var products = product.findOneAndUpdate({_id: request.payload._id})
   }
 }
 
 exports.CreateProduct = {
   handler: function(request, reply){
+    var tagArray = request.payload.tags.split(",");
+    tagArray.push(request.payload.name);
     var newProduct = new product({
       image: request .payload.image,
       name: request.payload.name,
       description: request.payload.description,
-      tags: request.payload.tags,
+      tags: tagArray,
       price: request.payload.price,
       quantity: request.payload.quantity,
       state: true
     });
     newProduct.save();
-    console.log('producto creado');
     return reply('ok');
   }
 }

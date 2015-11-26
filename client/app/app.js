@@ -18,6 +18,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 						params:{content:undefined},
 						controller: 'HomeController',
 				})
+				.state('service', {
+						url: '/service',
+						templateUrl: 'views/searchService.html',
+						params:{content:undefined},
+						controller: 'HomeController',
+				})
 				.state('about', {
 						url: '/about',
 						params:{content:undefined},
@@ -42,4 +48,4 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 						templateUrl: 'views/contact.html',
 						controller: 'HomeController'
 				});
-}]) 
+}])
