@@ -10,7 +10,6 @@ angular.module('AngularScaffold.Controllers')
   $scope.show_admin = true;
   $scope.show_bill= false;
 
-
   $scope.show_modificar = function(product){
     $scope.productoModif.id = product._id;
     $scope.productoModif.image = product.image;
@@ -33,7 +32,6 @@ angular.module('AngularScaffold.Controllers')
       console.log($scope.products);
      
     }).catch(function(err){
-      alert('Error fetching users')
     });
   };
 

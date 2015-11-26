@@ -14,6 +14,10 @@
 .input_gestion_productos{
     width:50%;
 }
+#detailImage{
+    width:500px;
+    height:500px;
+}
 .fotoProducto{
     width:200px;
     height : 150px;
