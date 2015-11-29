@@ -42,6 +42,10 @@ angular.module('AngularScaffold.Controllers')
     $state.go('products');
   };
 
+  $scope.goGestionUser = function(){
+    $state.go('adminUsers');
+  };
+
   $scope.Login = function(){
   	HomeService.GetLogin($scope.user).then(function(response){
   	$scope.users = response.data;
@@ -50,13 +54,13 @@ angular.module('AngularScaffold.Controllers')
 		});
 	}
 
-	$scope.getUsers = function(){
+	/*$scope.getUsers = function(){
 		HomeService.GetUsers().then(function(response){
 		$scope.users = response.data;
 	}).catch(function(err){
 		alert('Error fetching users')
 		});
-	};
+	};*/
 
   $scope.loadSearched=function(){
     HomeService.searchByTag($scope.prueba).then(function(response){
@@ -79,11 +83,11 @@ angular.module('AngularScaffold.Controllers')
       $state.go('service',{content:{searched_value:searched_value}},{ reload: true });
   };
 
-	$scope.postUsers = function(){
+	/*$scope.postUsers = function(){
 		HomeService.PostUsers($scope.user).then(function(response){
 	    alert("Posted to /users");
 	}).catch(function(err){
 	    alert("Error posting to users");
 		});
-	}
+	}*/
 }]);

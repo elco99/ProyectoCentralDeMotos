@@ -3,7 +3,6 @@ var user = require('../schemas/user');
 exports.getUser = {
   handler: function(request, reply){
     var users = user.find({});
-    alert(users.data);
     reply(users);
   }
 }
@@ -19,8 +18,30 @@ exports.createUser = {
       state: true
     });
     newUser.save();
-    console.log('usuario creado');
     return reply('ok');
+  }
+}
+
+exports.updateUsers ={
+  handler: function(request,reply){
+
+    user.findById(request.payload.id,function(err,users){
+      users.name = request.payload.name;
+      users.username = request.payload.username;
+      users.password = request.payload.password;
+      users.email = request.payload.email;
+      users.type = request.payload.type;
+      if (request.payload.state != "true") {
+        users.state = false;
+      }else{
+        users.state = true;
+      };
+
+      users.save(function(err){
+        if(err) throw err;
+      })
+    })
+
   }
 }
 

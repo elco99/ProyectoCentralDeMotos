@@ -38,7 +38,7 @@ angular.module('AngularScaffold.Controllers')
     HomeService.fetchGet().then(function(response){
       $scope.products = response.data;
     }).catch(function(err){
-      alert('Error fetching users')
+      alert('Error fetching products')
     });
   };
 

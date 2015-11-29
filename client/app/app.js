@@ -42,6 +42,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		            templateUrl: 'views/detailProduct.html',
 		            controller: 'CatalogController'
 		        })
+		        .state('adminUsers', {
+						url: '/AddUsers',
+						templateUrl: 'views/AddUsers.html',
+						params:{content:undefined},
+						controller: 'HomeController',
+				})
 				.state('contact', {
 						url: '/contact',
 						params:{content:undefined},
