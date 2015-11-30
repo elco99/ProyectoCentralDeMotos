@@ -3,7 +3,6 @@ var product = require('../schemas/products');
 exports.getProduct = {
   handler: function(request, reply){
     var products = product.find({});
-    //alert(products.data);
     reply(products);
   }
 }
@@ -11,7 +10,6 @@ exports.getProduct = {
 exports.gettingFetch ={
   handler: function(request, reply){
     var products = product.find({});
-    //console.log(products);
     reply(products);
   }
 }

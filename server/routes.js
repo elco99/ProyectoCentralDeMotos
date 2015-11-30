@@ -10,5 +10,6 @@ exports.endpoints = [{method: 'GET', path: '/{param*}', config: homeController.h
           			{method: 'GET', path: '/v1/product/get', config: productsController.getProduct},
           			{method: 'GET', path: '/v1/product', config: productsController.getAllProducts},
           			{method: 'PUT', path: '/v1/product/update', config: productsController.updateProduct},
+          			{method: 'PUT', path: '/v1/user/update', config: usersController.updateUsers},
           			{method: 'POST', path: '/v1/product/search', config: productsController.SearchByTags},
           			{method: 'GET', path: '/v1/product/fetch', config: productsController.gettingFetch}];

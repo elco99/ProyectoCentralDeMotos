@@ -17,6 +17,9 @@ angular.module('AngularScaffold.Services').factory('HomeService', ['$http',
 			fetchGet: function(){
 				return $http.get('v1/product/fetch');
 			},
+			SaveUserChanges: function(payload){
+				return $http.put('v1/user/update',payload);
+			},
 			SaveChanges: function(payload){
 				return $http.put('v1/product/update',payload);
 			},
