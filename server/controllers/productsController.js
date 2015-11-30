@@ -7,6 +7,13 @@ exports.getProduct = {
   }
 }
 
+exports.SearchByCode = {
+  handler: function(request, reply){
+    var item = product.find({code : request.payload});
+    reply(item);
+  }
+}
+
 exports.gettingFetch ={
   handler: function(request, reply){
     var products = product.find({});
@@ -44,6 +51,7 @@ exports.updateProduct ={
       if(index >= 0){
         request.payload.tags.splice(index,1);
       }
+      products.code = request.payload.code;
       products.name = request.payload.name;
       products.description = request.payload.description;
       request.payload.tags.push(request.payload.name);

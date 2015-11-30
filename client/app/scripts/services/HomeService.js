@@ -20,6 +20,9 @@ angular.module('AngularScaffold.Services').factory('HomeService', ['$http',
 			fetchGet: function(){
 				return $http.get('v1/product/fetch');
 			},
+			AddItem: function(payload){
+				return $http.post('v1/factura/add',payload);
+			},
 			SaveUserChanges: function(payload){
 				return $http.put('v1/user/update',payload);
 			},

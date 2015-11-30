@@ -1,12 +1,39 @@
 angular.module('AngularScaffold.Controllers')
- .controller('AddProductController', ['$scope', 'HomeService','$state','$sessionStorage', function ($scope, HomeService,$state,$sessionStorage) {
+ .controller('FacturaController', ['$scope', 'HomeService','$state', function ($scope, HomeService,$state) {
   $scope.products = [];
   $scope.producto = {};
-  $scope.productoModif = {};
+  $scope.item = {};
+
+	$scope.show_login = true;
+  $scope.show_logout = false;
+  $scope.show_shopping_cart = false;
+  $scope.show_admin = true;
+  $scope.show_bill= false;
+
+  $scope.deleteItem = function(product){
+     $scope.products.splice($scope.products.indexOf(product),1);
+  };
+
+  $scope.addItem = function(){
+    HomeService.AddItem($scope.item.ingreso).then(function(response){
+      
+      var cont = -1;
+      for (var i = response.data.length-1; i>= 0; i--) {
+        /*if (response.data[0].code === $scope.products[i].code) {
+          cont = i;
+          break;
+        };*/
+         $scope.products.push(response.data[i]);
+      };
+
+     
+    }).catch(function(err){
+      alert('Error fetching products')
+    });
+  };
 
   $scope.show_modificar = function(product){
     $scope.productoModif.id = product._id;
-    $scope.productoModif.code = product.code;
     $scope.productoModif.image = product.image;
     $scope.productoModif.name = product.name;
     $scope.productoModif.description = product.description;

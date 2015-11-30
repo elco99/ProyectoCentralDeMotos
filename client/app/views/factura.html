@@ -1,0 +1,49 @@
+<div ng-controller="FacturaController" class="container">
+    <div id="">
+
+    	<div id="FacturaInput" >
+    		<label>Código:</label>
+    		<input  ng-model="item.ingreso"> </input>
+    		<input type="submit" ng-click="addItem()" class="btn btn-success" value="Agregar"></input>    		
+    	</div>
+
+    	<div id="TablaFactura" class = "container">
+			<table id="" class="table table-striped">
+		      <tr>
+		      	<th>
+		      		Código
+		      	</th>
+		        <th>
+		          Nombre
+		        </th>
+		        <th>
+		          Cantidad
+		        </th>
+		        <th>
+		          Precio
+		        </th>
+		        <th>
+		        </th>
+		      </tr>
+
+		      <tr ng-repeat="product in products track by $index">
+		      	<td >
+		      		<label readonly="" ng-model="item.codigo"> {{product.code}}</label>
+		      	</td>
+		      	<td>
+		      		<label ng-model="item.nombre">{{product.name}}</label>
+		      	</td>
+		      	<td>
+		      		<input ng-model="item.cantidad[$index]" type="number" value="1" min="1" max={{product.quantity}} id="facturaCantidad"></input>
+		      	</td>
+		      	<td>
+		      		<label ng-model="item.precio">{{product.price}}</label>
+		      	</td>
+		      	<td>
+		      		<label type="submit" ng-click="deleteItem(product)" class="btn btn-danger glyphicon glyphicon-remove"></label>
+		      	</td>
+		      </tr>
+		    </table>   
+		</div>                     
+    </div>
+</div>

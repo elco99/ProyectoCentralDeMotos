@@ -28,7 +28,10 @@
 					        <div class="col-md-12 col-sm-12">
 					            <label>URL Imagen</label>
 					            <input ng-model="producto.image" type="text" >
-					            
+					        </div>
+					        <div class="col-md-12 col-sm-12">
+					            <label>Codigo</label>
+					            <input ng-model="producto.code" type="text" >
 					        </div>
 					        <div class="col-md-12 col-sm-12">
 					            <label>Nombre</label>
@@ -62,6 +65,9 @@
 						      	<th ng-if ="false">
 						      		ID
 						      	</th>
+						      	<th ng-if="false">
+						      		Codigo
+						      	</th>
 						        <th>
 						          Imagen
 						        </th>
@@ -89,6 +95,9 @@
 						      <tr>
 						      	<td ng-if="false">
 						      		<input readonly="" ng-model="productoModif.id"> </input>
+						      	</td>
+						      	<td ng-if="false">
+						      		<input type="text" ng-model="productoModif.code"> </input>
 						      	</td>
 						      	<td>
 						      		<input ng-model="productoModif.image" type = "text"> </input>
@@ -119,6 +128,9 @@
 						      	<td ng-if ="false">
 						      		{{product._id}}/
 						      	</td>
+						      	<td ng-if="false">
+						          {{product.code}}
+						        </td>
 						        <td>
 						          {{product.image}}
 						        </td>

@@ -28,6 +28,10 @@ angular.module('AngularScaffold.Controllers')
       $state.go('home');
     };
 
+  $scope.goFactura = function(){
+    $state.go('factura');
+  }
+
     $scope.goService = function(){
         $state.go('services');
     };
