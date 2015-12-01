@@ -32,6 +32,12 @@ angular.module('AngularScaffold.Services').factory('HomeService', ['$http',
 			AddProduct: function(payload){
 				return $http.post('v1/product/add',payload);
 			},
+			Facturar: function(){
+				return $http.get('v1/facturar',payload);
+			},
+			ChangeSoldProduct:function(payload){
+				return $http.put('v1/facturar/update',payload);
+			},
 			searchByTag: function(payload){
 				return $http.post('v1/product/search',payload);
 			}

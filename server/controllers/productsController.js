@@ -36,6 +36,17 @@ exports.getAllProducts = {
   }
 }
 
+exports.UpdateSoldProducts= {
+  handler: function(request,reply){
+     product.findById(request.payload._id,function(err,products){
+       products.quantity = request.payload.quantity;    
+       products.save(function(err){
+        if(err) throw err;
+       })
+    })
+  }
+}
+
 exports.updateProduct ={
   auth: {
     mode:'required',
@@ -57,6 +68,7 @@ exports.updateProduct ={
       request.payload.tags.push(request.payload.name);
       products.tags = request.payload.tags;
       products.price = request.payload.price;
+      products.subtotal = 0;
       products.currentAmount = 1;
       products.quantity = request.payload.quantity;
       if (request.payload.state != "true") {
@@ -71,6 +83,13 @@ exports.updateProduct ={
     })
 
   //var products = product.findOneAndUpdate({_id: request.payload._id})
+  }
+}
+
+exports.facturacion = {
+  handler: function(request, reply){
+    var products = product.find({});
+    reply(products);
   }
 }
 
@@ -89,6 +108,7 @@ exports.CreateProduct = {
       description: request.payload.description,
       tags: tagArray,
       price: request.payload.price,
+      subtotal: 1,
       currentAmount: 1,
       quantity: request.payload.quantity,
       state: true

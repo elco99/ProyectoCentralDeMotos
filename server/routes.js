@@ -17,4 +17,6 @@ exports.endpoints = [
                          {method: 'POST', path: '/v1/factura/add', config: productsController.SearchByCode},
 	{method: 'POST', path: '/v1/login', config: authController.login},
 	{method: 'GET', path: '/v1/logout', config: authController.logout}
+                         {method: 'GET', path: '/v1/facturar', config: productsController.facturacion},
+                         {method: 'PUT', path: '/v1/facturar/update', config: productsController.UpdateSoldProducts},
 ];
