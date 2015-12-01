@@ -1,6 +1,7 @@
 var homeController = require('./controllers/homeController');
 var productsController = require('./controllers/productsController');
 var usersController = require('./controllers/usersController');
+var authController = require('./controllers/authController');
 
 exports.endpoints = [{method: 'GET', path: '/{param*}', config: homeController.home},
 					{method: 'GET', path: '/v1/users', config: usersController.getUser},
@@ -12,4 +13,6 @@ exports.endpoints = [{method: 'GET', path: '/{param*}', config: homeController.h
           			{method: 'PUT', path: '/v1/product/update', config: productsController.updateProduct},
           			{method: 'PUT', path: '/v1/user/update', config: usersController.updateUsers},
           			{method: 'POST', path: '/v1/product/search', config: productsController.SearchByTags},
-          			{method: 'GET', path: '/v1/product/fetch', config: productsController.gettingFetch}];
+          			{method: 'GET', path: '/v1/product/fetch', config: productsController.gettingFetch},								
+								{method: 'POST', path: '/v1/login', config: authController.login},
+								{method: 'GET', path: '/v1/logout', config: authController.logout}];
