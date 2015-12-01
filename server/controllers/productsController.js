@@ -57,6 +57,7 @@ exports.updateProduct ={
       request.payload.tags.push(request.payload.name);
       products.tags = request.payload.tags;
       products.price = request.payload.price;
+      products.currentAmount = 1;
       products.quantity = request.payload.quantity;
       if (request.payload.state != "true") {
         products.state = false;
@@ -88,6 +89,7 @@ exports.CreateProduct = {
       description: request.payload.description,
       tags: tagArray,
       price: request.payload.price,
+      currentAmount: 1,
       quantity: request.payload.quantity,
       state: true
     });

@@ -18,13 +18,18 @@ angular.module('AngularScaffold.Controllers')
     HomeService.AddItem($scope.item.ingreso).then(function(response){
       
       var cont = -1;
-      for (var i = response.data.length-1; i>= 0; i--) {
-        /*if (response.data[0].code === $scope.products[i].code) {
+      for (var i = $scope.products.length-1; i>= 0; i--) {
+        if (response.data[0].code === $scope.products[i].code) {
           cont = i;
           break;
-        };*/
-         $scope.products.push(response.data[i]);
+        };
       };
+      
+      if (cont >= 0) {
+        $scope.products[cont].currentAmount++;
+      }else{
+        $scope.products.push(response.data[0]);
+      }
 
      
     }).catch(function(err){
