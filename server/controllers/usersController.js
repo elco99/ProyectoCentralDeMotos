@@ -18,7 +18,8 @@ exports.getUser = {
 exports.updateUsers ={
     auth: {
       mode:'try',
-      strategy:'session'
+      strategy:'session',
+      scope: ['admin']
     },
   handler: function(request,reply){
 
@@ -45,8 +46,9 @@ exports.updateUsers ={
 
 exports.createUser = {
     auth: {
-      mode:'try',
-      strategy:'session'
+      mode:'required',
+      strategy:'session',
+      scope: ['admin']
     },
     handler: function(request, reply) {
       var newUser = new user({
