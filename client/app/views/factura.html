@@ -56,11 +56,10 @@
 		    
 		      <!-- Modal content-->
 		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title FacturaCentrado">Central de Motos</h4>
-		        </div>
 		        <div id="FacturaPrint" class="modal-body ">
+		        	<h4 class="FacturaCentrado">Central de Motos</h4>
+		        	<label>{{$sessionStorage.currentUser.username}}</label>
+
 		          <table>
 					<tr ng-repeat = "n in products">
 						<td class="espacioTotal">
