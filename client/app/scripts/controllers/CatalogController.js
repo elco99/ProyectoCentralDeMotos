@@ -1,5 +1,5 @@
 angular.module('AngularScaffold.Controllers')
- .controller('CatalogController', ['$scope', 'HomeService','$state','$stateParams', function ($scope, HomeService,$state,$stateParams) {
+ .controller('CatalogController', ['$scope', 'HomeService','$state','$stateParams', '$sessionStorage', function ($scope, HomeService,$state,$stateParams, $sessionStorage) {
   $scope.products = [];
   $scope.producto = {};
   if($state.params.content){

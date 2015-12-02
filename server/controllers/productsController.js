@@ -30,6 +30,11 @@ exports.getAllProducts = {
 }
 
 exports.updateProduct ={
+  auth: {
+    mode:'required',
+    strategy:'session',
+    scope: ['admin']
+  },
   handler: function(request,reply){
     //var products = product.update({_id: request.payload.id},{name: request.payload.name});
 
@@ -61,6 +66,11 @@ exports.updateProduct ={
 }
 
 exports.CreateProduct = {
+  auth: {
+    mode:'required',
+    strategy:'session',
+    scope: ['admin']
+  },
   handler: function(request, reply){
     var tagArray = request.payload.tags.split(",");
     tagArray.push(request.payload.name);

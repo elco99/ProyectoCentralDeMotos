@@ -1,5 +1,5 @@
 angular.module('AngularScaffold.Controllers')
- .controller('AddUsersController', ['$scope', 'HomeService','$state', function ($scope, HomeService,$state) {
+ .controller('AddUsersController', ['$scope', 'HomeService','$state','$sessionStorage', function ($scope, HomeService,$state,$sessionStorage) {
 	$scope.users = [];
 	$scope.user = {};
 	$scope.userModif = {};

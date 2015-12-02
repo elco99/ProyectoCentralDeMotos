@@ -1,5 +1,5 @@
 angular.module('AngularScaffold.Services').factory('HomeService', ['$http',
-	function($http){//LOS GET NO PUEDEN LLEVAR PAYLOAD
+	function($http){
 		return {
 			GetUsers: function(){
 				return $http.get("v1/users");
@@ -7,9 +7,11 @@ angular.module('AngularScaffold.Services').factory('HomeService', ['$http',
 			PostUsers: function(payload){
 				return $http.post("v1/user", payload);
 			},
-
-			GetLogin: function(payload){
-				return $http.post('v1/user/login',payload);
+			Logout: function(){
+				return $http.get("v1/logout");
+			},
+			Login: function(payload){
+				return $http.post("v1/login", payload);
 			},
 			GetAllProduct: function(){
 				return $http.get('v1/product');
@@ -30,5 +32,5 @@ angular.module('AngularScaffold.Services').factory('HomeService', ['$http',
 				return $http.post('v1/product/search',payload);
 			}
 
-	    };
+		};
 }]);

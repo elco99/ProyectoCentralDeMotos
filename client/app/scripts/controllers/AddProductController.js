@@ -1,5 +1,5 @@
 angular.module('AngularScaffold.Controllers')
- .controller('AddProductController', ['$scope', 'HomeService','$state', function ($scope, HomeService,$state) {
+ .controller('AddProductController', ['$scope', 'HomeService','$state','$sessionStorage', function ($scope, HomeService,$state,$sessionStorage) {
   $scope.products = [];
   $scope.producto = {};
   $scope.productoModif = {};
