@@ -8,7 +8,7 @@ exports.login = {
     validate: {
       payload: {
         username: joi.string().required(),
-        password: joi.string().min(2).max(200).required()
+        password: joi.string().min(5).max(20).required()
       }
     },
     handler: function(request, reply) {

@@ -5,6 +5,7 @@ angular.module('AngularScaffold.Services').factory('HomeService', ['$http',
 				return $http.get("v1/users");
 			},
 			PostUsers: function(payload){
+				console.log(payload)
 				return $http.post("v1/user", payload);
 			},
 			Logout: function(){

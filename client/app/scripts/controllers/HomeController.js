@@ -1,6 +1,6 @@
 angular.module('AngularScaffold.Controllers')
   .controller('HomeController', ['HomeService', '$scope', '$rootScope','$state', '$sessionStorage',  function (HomeService, $scope, $rootScope,$state, $sessionStorage) {
-    $scope.user = {};
+    $scope.SessionCurrentUser = {};
     $scope.$sessionStorage = $sessionStorage;
     $scope.users = [];
   	$scope.user = {};
@@ -11,12 +11,10 @@ angular.module('AngularScaffold.Controllers')
 
     $scope.search=[];
     $scope.prueba = {};
-
-  	$scope.show_login = true;
+  	/*$scope.show_login = true;
     $scope.show_logout = false;
     $scope.show_shopping_cart = false;
-    $scope.show_admin = true;
-    $scope.show_bill= false;
+    $scope.show_bill= false;*/
 
     if($state.params.content){
       $scope.prueba = $state.params.content.searched_value;
@@ -47,14 +45,24 @@ angular.module('AngularScaffold.Controllers')
     $scope.goGestionUser = function(){
       $state.go('adminUsers');
     };
+    $scope.logout = function(){
+      HomeService.Logout().then(function(response){
+        alert('logged out correctly');
+        $sessionStorage.$reset();
+      }).catch(function(err){
+        alert(err.data.error + " " + err.data.message);
+      })
+    }
 
-    $scope.Login = function(){
-    	HomeService.GetLogin($scope.user).then(function(response){
-    	$scope.users = response.data;
-  	}).catch(function(err){
-  	    alert(err + "     " + "Error login to users");
-  		});
-  	}
+    $scope.login = function(){
+      HomeService.Login($scope.user).then(function(response){
+        $sessionStorage.currentUser = response.data;
+        $scope.SessionCurrentUser = {};
+        console.log(  $scope.SessionCurrentUsers)
+      }).catch(function(err){
+        alert(err.data.error + " " + err.data.message);
+      });
+    }
 
   	/*$scope.getUsers = function(){
   		HomeService.GetUsers().then(function(response){
@@ -86,11 +94,19 @@ angular.module('AngularScaffold.Controllers')
     };
 
     $scope.isAdmin = function(){
+      console.log($sessionStorage.currentUser)
       return $sessionStorage.currentUser && $sessionStorage.currentUser.scope.indexOf('admin') > -1;
     }
 
-    $scope.isRegular = function(){
-      return $sessionStorage.currentUser && $sessionStorage.currentUser.scope.indexOf('regular') > -1;
+    $scope.isVendedor = function(){
+      return $sessionStorage.currentUser && $sessionStorage.currentUser.scope.indexOf('vendedor') > -1;
     }
 
+    $scope.isCliente = function(){
+      return $sessionStorage.currentUser && $sessionStorage.currentUser.scope.indexOf('cliente') > -1;
+    }
+    $scope.isLogged= function(){
+      console.log($scope.$sessionStorage);
+      return $scope.$sessionStorage.currentUser;
+    }
   }]);
