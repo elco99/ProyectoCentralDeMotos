@@ -1,13 +1,16 @@
 var mongoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
 
 var ProductsSchema = new mongoose.Schema({
-	image: String,
-	name:String,
-	description:String,
-	tags: [String],
-	price: Number,
-	quantity: Number,
-	state: Boolean,
+  image: {type:String,  required:true},
+  code: {type:String, unique:true, required:true},
+  name:{type:String, required:true},
+  description:{type:String, required:true},
+  tags: [String],
+  price: {type:String, required:true},
+  quantity:{type:String, required:true},
+  state: Boolean,
 });
 
+ProductsSchema.plugin(uniqueValidator);
 module.exports = mongoose.model('Products', ProductsSchema);

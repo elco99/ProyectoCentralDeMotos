@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="AngularScaffold">
-
-<head>
+<html ng-app="AngularScaffold">
+  <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,10 +24,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-</head>
-
-<body >
-
+  </head>
+  <body >
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller = "HomeController">
       <div class="container-fluid">
@@ -46,7 +43,7 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right" >
-                  <li ng-cloak ng-show="show_cart" >
+                  <li ng-cloak ng-show="isCliente()" >
                       <button id= "shopping_cart_button" class="btn btn-danger glyphicon glyphicon-shopping-cart"/>
                   </li>
                   <li>
@@ -70,10 +67,10 @@
                   <li>
                       <a class="btn btn-link" ng-click = "goContact()">Contáctenos</a>
                   </li>
-                  <li ng-cloak ng-show="show_bill">
+                  <li ng-cloak ng-show="isVendedor()">
                       <a href="#">Factura</a>
                   </li>
-                  <li class="dropdown" ng-cloak ng-show="show_admin">
+                  <li class="dropdown" ng-cloak ng-show="isAdmin()">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administración<b class="caret"></b></a>
                       <ul class="dropdown-menu">
                           <li>
@@ -91,31 +88,20 @@
 
                       </ul>
                   </li>
-                  <!--<li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                          <li>
-                              <a href="portfolio-4-col.html">4 Column Portfolio</a>
-                          </li>
-                          <li>
-                              <a href="portfolio-item.html">Single Portfolio Item</a>
-                          </li>
-                      </ul>
-                  </li>-->
 
                   <!--LOGIN-->
-                  <li class="dropdown" >
-                    <a  ng-cloak ng-show="show_login" class="dropdown-toggle" href="#" data-toggle="dropdown">Conectarse <strong class="caret"></strong></a>
+                  <li ng-cloak ng-show="!isLogged()"  class="dropdown" >
+                    <a  class="dropdown-toggle" href="#" data-toggle="dropdown">Conectarse<strong class="caret"></strong></a>
                     <div class="dropdown-menu" id= "login_container">
                       <form method="post">
                         <input id="username" ng-model = "user.username"></input>
                         <input id="password" type="password" ng-model= "user.password"></input>
-                        <input class="btn btn-danger" type="submit" value="Conectarse" ng-click="Login()" />
+                        <input class="btn btn-danger" type="submit" value="Conectarse" ng-click="login()" />
                       </form>
                     </div>
                   </li>
-                  <li ng-cloak  ng-if="false">
-                    <button class="btn btn-danger" id="logout_button"  ng-click="Logout()">Desconectar</button>
+                  <li ng-cloak ng-show="isLogged()">
+                    <button class="btn btn-danger" id="logout_button"  ng-click="logout()">Desconectar</button>
                   </li>
                   <!--LOGIN/LOGOUT-->
               </ul>
@@ -125,54 +111,54 @@
       <!-- /.container -->
     </nav>
 
-    <div ui-view></div>
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; My little pony 2015</p>
-                </div>
+    <div ui-view>  </div> <!--views-->
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; My little pony 2015</p>
             </div>
-        </footer>
+        </div>
+    </footer>
+  </body>
 
-    </div>
-    <!-- /.container -->
+  <!-- bower:js -->
 
+  <script src="/jquery/dist/jquery.js"></script>
 
+  <script src="/angular/angular.js"></script>
 
+  <script src="/angular-ui-router/release/angular-ui-router.js"></script>
 
+  <script src="/bootstrap-css/js/bootstrap.min.js"></script>
 
-      <!-- bower:js -->
-      <script src="/jquery/dist/jquery.js"></script>
-      <script src="/angular/angular.js"></script>
-      <script src="/angular-ui-router/release/angular-ui-router.js"></script>
-      <script src="/bootstrap-css/js/bootstrap.min.js"></script>
-      <script src="/bootstrap/dist/js/bootstrap.js"></script>
-      <!-- endinject -->
+  <script src="/ngstorage/ngStorage.js"></script>
 
-      <script src="app.js"></script>
+  <script src="/bootstrap/dist/js/bootstrap.js"></script>
 
-      <!-- inject:js -->
-      <script src="scripts/controllers/HomeController.js"></script>
-      <script src="scripts/controllers/AddProductController.js"></script>
-      <script src="scripts/controllers/CatalogController.js"></script>
-      <script src="scripts/controllers/AddUsersController.js"></script>
-      <script src="scripts/services/HomeService.js"></script>
-      <!-- endinject -->
-   <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+  <!-- endinject -->
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+  <script src="app.js"></script>
 
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
+  <!-- inject:js -->
+  <script src="scripts/controllers/HomeController.js"></script>
+  <script src="scripts/controllers/AddProductController.js"></script>
+  <script src="scripts/controllers/CatalogController.js"></script>
+  <script src="scripts/controllers/AddUsersController.js"></script>
+  <script src="scripts/services/HomeService.js"></script>
+  <!-- endinject -->
+
+  <!-- jQuery -->
+  <script src="js/jquery.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
 
 
-</body>
-
+  <script>
+  $('.carousel').carousel({
+      interval: 5000 //changes the speed
+  })
+  </script>
 </html>

@@ -1,4 +1,4 @@
-var app = angular.module('AngularScaffold', ['ui.router', 'AngularScaffold.Services', 'AngularScaffold.Controllers']);
+var app = angular.module('AngularScaffold', ['ui.router', 'ngStorage', 'AngularScaffold.Services', 'AngularScaffold.Controllers']);
 
 angular.module('AngularScaffold.Controllers', []);
 angular.module('AngularScaffold.Services', []);
@@ -6,12 +6,12 @@ angular.module('AngularScaffold.Services', []);
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('home');
 	$stateProvider
-		        .state('home', {
-		            url: '/home',
-		            params:{content:undefined},
-		            templateUrl: 'views/home.html',
-		            controller: 'HomeController'
-		        })
+        .state('home', {
+            url: '/home',
+						params:{content:undefined},
+            templateUrl: '/views/home.html',
+            controller: 'HomeController'
+        })
 				.state('services', {
 						url: '/services',
 						templateUrl: 'views/services.html',
@@ -31,18 +31,18 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 						controller: 'HomeController'
 				})
 				.state('products', {
-		            url: '/AddProducts',
-		            params:{content:undefined},
-		            templateUrl: 'views/AddProduct.html',
-		            controller: 'CatalogController'
-		        })
-		        .state('details', {
-		            url: '/details',
-		            params:{content:undefined},
-		            templateUrl: 'views/detailProduct.html',
-		            controller: 'CatalogController'
-		        })
-		        .state('adminUsers', {
+								url: '/AddProducts',
+								params:{content:undefined},
+								templateUrl: 'views/AddProduct.html',
+								controller: 'CatalogController'
+						})
+						.state('details', {
+								url: '/details',
+								params:{content:undefined},
+								templateUrl: 'views/detailProduct.html',
+								controller: 'CatalogController'
+						})
+						.state('adminUsers', {
 						url: '/AddUsers',
 						templateUrl: 'views/AddUsers.html',
 						params:{content:undefined},
