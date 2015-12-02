@@ -32,7 +32,12 @@ angular.module('AngularScaffold.Controllers')
       if (cont >= 0) {
         $scope.products[cont].currentAmount += 1;
       }else{
-        $scope.products.push(response.data[0]);
+        if (response.data[0].quantity > 0) {
+          $scope.products.push(response.data[0]);
+        }else{
+          alert("No hay suficiente en inventario");
+        };
+        
       }
       $scope.putSubTotal();     
     }).catch(function(err){
@@ -66,6 +71,10 @@ angular.module('AngularScaffold.Controllers')
       $scope.factura.subtotal = contador;
   };
 
+  $scope.CancelAll = function(){
+    $state.reload();
+  };
+
   $scope.reduccionInventario = function(divName){
     for (var i = $scope.products.length - 1; i >= 0; i--) {
       $scope.products[i].quantity = $scope.products[i].quantity - $scope.products[i].currentAmount;
@@ -73,15 +82,27 @@ angular.module('AngularScaffold.Controllers')
     for (var i = $scope.products.length - 1; i >= 0; i--) {
       HomeService.ChangeSoldProduct($scope.products[i]).then(function(response){
         $scope.products = response.data;
+        if ($scope.products.quantity <= 0) {
+          HomeService.NoMoreItems($scope.products).then(function(response){
+            $scope.products = response.data;
+
+          })
+        };
       }).catch(function(err){
 
       });
       
-      var printContents = document.getElementById(divName).innerHTML;
-      var popupWin = window.open('', '_blank', 'width=300,height=300');
-      popupWin.document.open()
-      popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</html>');
-      popupWin.document.close();
+      try{
+        var printContents = document.getElementById(divName).innerHTML;
+        var popupWin = window.open('', '_blank', 'width=300,height=300');
+        popupWin.document.open()
+        popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</html>');
+        popupWin.document.close();
+      }catch(e){
+
+      }
+
+      $state.reload();
     };
   };
 }]);

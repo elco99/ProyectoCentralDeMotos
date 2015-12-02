@@ -12,6 +12,9 @@
     padding-top:5%;
     padding-bottom: 3%;
 }
+#BotonCancelar{
+    margin-left: 1%;
+}
 .FacturaCentrado{
     text-align: center;
 }

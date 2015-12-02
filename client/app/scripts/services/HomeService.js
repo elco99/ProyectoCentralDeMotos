@@ -38,6 +38,9 @@ angular.module('AngularScaffold.Services').factory('HomeService', ['$http',
 			ChangeSoldProduct:function(payload){
 				return $http.put('v1/facturar/update',payload);
 			},
+			NoMoreItems: function(payload){
+				return $http.put('v1/facturar/updateState',payload);
+			},
 			searchByTag: function(payload){
 				return $http.post('v1/product/search',payload);
 			}

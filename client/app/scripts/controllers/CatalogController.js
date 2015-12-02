@@ -21,7 +21,6 @@ angular.module('AngularScaffold.Controllers')
   $scope.getCatalogo = function(){
     HomeService.GetAllProduct().then(function(response){
       $scope.products = response.data;
-      console.log($scope.products);
     }).catch(function(err){
       alert('Error fetching users')
     });

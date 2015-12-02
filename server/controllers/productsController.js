@@ -24,13 +24,13 @@ exports.gettingFetch ={
 
 exports.SearchByTags ={
   handler: function(request, reply){
-    var products = product.find({tags : request.payload.tags });
+    var products = product.find({tags : request.payload.tags , state: true});
     reply(products);
   }
 }
 exports.getAllProducts = {
   handler: function(request, reply){
-    var products = product.find({});
+    var products = product.find({state:true});
     //console.log(products);
     reply(products);
   }
@@ -40,6 +40,18 @@ exports.UpdateSoldProducts= {
   handler: function(request,reply){
      product.findById(request.payload._id,function(err,products){
        products.quantity = request.payload.quantity;    
+       products.save(function(err){
+        if(err) throw err;
+       })
+       reply(products);
+    })
+  }
+}
+
+exports.UpdateStateProducts = {
+  handler: function(request,reply){
+     product.findById(request.payload._id,function(err,products){
+       products.state = !products.state;    
        products.save(function(err){
         if(err) throw err;
        })
@@ -103,8 +115,9 @@ exports.CreateProduct = {
     var tagArray = request.payload.tags.split(",");
     tagArray.push(request.payload.name);
     var newProduct = new product({
-      image: request .payload.image,
+      image: request.payload.image,
       name: request.payload.name,
+      code: request.payload.code,
       description: request.payload.description,
       tags: tagArray,
       price: request.payload.price,
@@ -114,6 +127,6 @@ exports.CreateProduct = {
       state: true
     });
     newProduct.save();
-    return reply('ok');
+    return reply('Creado Exitosamente');
   }
 }
