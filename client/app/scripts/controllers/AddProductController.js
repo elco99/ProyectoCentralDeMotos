@@ -4,14 +4,9 @@ angular.module('AngularScaffold.Controllers')
   $scope.producto = {};
   $scope.productoModif = {};
 
-	$scope.show_login = true;
-  $scope.show_logout = false;
-  $scope.show_shopping_cart = false;
-  $scope.show_admin = true;
-  $scope.show_bill= false;
-
   $scope.show_modificar = function(product){
     $scope.productoModif.id = product._id;
+    $scope.productoModif.code = product.code;
     $scope.productoModif.image = product.image;
     $scope.productoModif.name = product.name;
     $scope.productoModif.description = product.description;

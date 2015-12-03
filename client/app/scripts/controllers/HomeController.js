@@ -28,6 +28,10 @@ angular.module('AngularScaffold.Controllers')
       $state.go('home');
     };
 
+  $scope.goFactura = function(){
+    $state.go('factura');
+  }
+
     $scope.goService = function(){
         $state.go('services');
     };
@@ -64,17 +68,12 @@ angular.module('AngularScaffold.Controllers')
       });
     }
 
-  	/*$scope.getUsers = function(){
-  		HomeService.GetUsers().then(function(response){
-  		$scope.users = response.data;
-  	}).catch(function(err){
-  		alert('Error fetching users')
-  		});
-  	};*/
-
     $scope.loadSearched=function(){
       HomeService.searchByTag($scope.prueba).then(function(response){
         $scope.search = response.data;
+      if ($scope.search.length === 0) {
+        alert("No existe")
+      };
       }).catch(function(err){
         alert('Error fetching product')
       });
@@ -92,7 +91,6 @@ angular.module('AngularScaffold.Controllers')
     $scope.searchByTags=function(searched_value){
         $state.go('service',{content:{searched_value:searched_value}},{ reload: true });
     };
-
     $scope.isAdmin = function(){
       console.log($sessionStorage.currentUser)
       return $sessionStorage.currentUser && $sessionStorage.currentUser.scope.indexOf('admin') > -1;

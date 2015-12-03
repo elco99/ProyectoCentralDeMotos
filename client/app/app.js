@@ -48,6 +48,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 						params:{content:undefined},
 						controller: 'HomeController',
 				})
+				.state('factura', {
+						url: '/Factura',
+						templateUrl: 'views/factura.html',
+						params:{content:undefined},
+						controller: 'HomeController',
+				})
 				.state('contact', {
 						url: '/contact',
 						params:{content:undefined},

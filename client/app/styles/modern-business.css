@@ -8,8 +8,27 @@
 #username{
 	margin-bottom: 15px;
 }
+#FacturaInput{
+    padding-top:5%;
+    padding-bottom: 3%;
+}
+#BotonCancelar{
+    margin-left: 1%;
+}
+.FacturaCentrado{
+    text-align: center;
+}
+.espacioTotal{
+    width:100px;
+}
+.botonesFactura{
+    background-color:transparent;
+}
 #password{
 	 margin-bottom: 15px;
+}
+#facturaCantidad{
+    width:80px;
 }
 .input_gestion_productos{
     width:50%;
