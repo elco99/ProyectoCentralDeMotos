@@ -22,7 +22,7 @@
                     <h3>Precio: {{n.price}}</h3>
                     <div>
                         <input type="number" min='1' max={{n.quantity}} value = "1"></input>
-                        <button class= "btn btn-danger glyphicon glyphicon-shopping-cart"></button>
+                        <button ng-cloak ng-show ="isCliente()" class= "btn btn-danger glyphicon glyphicon-shopping-cart"></button>
                     </div>
                 </div>
             </div>

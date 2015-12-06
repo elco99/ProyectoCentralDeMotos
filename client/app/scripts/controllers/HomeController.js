@@ -53,6 +53,7 @@ angular.module('AngularScaffold.Controllers')
       HomeService.Logout().then(function(response){
         alert('logged out correctly');
         $sessionStorage.$reset();
+        $scope.goHome();
       }).catch(function(err){
         alert(err.data.error + " " + err.data.message);
       })
@@ -62,7 +63,6 @@ angular.module('AngularScaffold.Controllers')
       HomeService.Login($scope.user).then(function(response){
         $sessionStorage.currentUser = response.data;
         $scope.SessionCurrentUser = {};
-        console.log(  $scope.SessionCurrentUsers)
       }).catch(function(err){
         alert(err.data.error + " " + err.data.message);
       });
@@ -92,7 +92,6 @@ angular.module('AngularScaffold.Controllers')
         $state.go('service',{content:{searched_value:searched_value}},{ reload: true });
     };
     $scope.isAdmin = function(){
-      console.log($sessionStorage.currentUser)
       return $sessionStorage.currentUser && $sessionStorage.currentUser.scope.indexOf('admin') > -1;
     }
 
@@ -104,7 +103,6 @@ angular.module('AngularScaffold.Controllers')
       return $sessionStorage.currentUser && $sessionStorage.currentUser.scope.indexOf('cliente') > -1;
     }
     $scope.isLogged= function(){
-      console.log($scope.$sessionStorage);
       return $scope.$sessionStorage.currentUser;
     }
   }]);

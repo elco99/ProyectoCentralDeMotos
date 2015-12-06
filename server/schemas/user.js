@@ -7,6 +7,8 @@ var UserSchema = new mongoose.Schema({
   password : String,
   email : {type: String, unique: true, required: true},
   scope : [String],//tiene q ver con autorizacion los roles
+  shopping_cart_code : [String],// contiene los códigos de los productos
+  shopping_cart_amount : [String], //contiene la cantidad de cada producto dentro del shopping_cart_code
   state : Boolean
 });
 

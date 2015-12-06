@@ -43,6 +43,9 @@ angular.module('AngularScaffold.Services').factory('HomeService', ['$http',
 			},
 			searchByTag: function(payload){
 				return $http.post('v1/product/search',payload);
+			},
+			add_bought_item: function(payload){
+				return $http.post('v1/shoppin_cart/add',payload);
 			}
 
 		};

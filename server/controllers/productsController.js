@@ -21,7 +21,6 @@ exports.gettingFetch ={
   }
 }
 
-
 exports.SearchByTags ={
   handler: function(request, reply){
     var products = product.find({tags : request.payload.tags , state: true});
@@ -36,10 +35,11 @@ exports.getAllProducts = {
   }
 }
 
+
 exports.UpdateSoldProducts= {
   handler: function(request,reply){
      product.findById(request.payload._id,function(err,products){
-       products.quantity = request.payload.quantity;    
+       products.quantity = request.payload.quantity;
        products.save(function(err){
         if(err) throw err;
        })
@@ -51,7 +51,7 @@ exports.UpdateSoldProducts= {
 exports.UpdateStateProducts = {
   handler: function(request,reply){
      product.findById(request.payload._id,function(err,products){
-       products.state = !products.state;    
+       products.state = !products.state;
        products.save(function(err){
         if(err) throw err;
        })
