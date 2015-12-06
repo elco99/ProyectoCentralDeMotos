@@ -8,7 +8,7 @@ var ProductsSchema = new mongoose.Schema({
   description:{type:String, required:true},
   tags: [String],
   price: {type:String, required:true},
-  quantity:{type:String, required:true},
+  quantity:{type:Number, required:true},
 	subtotal:Number,
 	currentAmount: Number,
   state: Boolean,

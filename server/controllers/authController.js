@@ -14,8 +14,6 @@ exports.login = {
     handler: function(request, reply) {
       var password = String(SHA3(request.payload.password));
       user.find({username: request.payload.username, password: password}, function(err, user){
-          console.log(user);
-          console.log(err)
           if(!err){
             if(user.length > 0){
               request.auth.session.set(user[0]);

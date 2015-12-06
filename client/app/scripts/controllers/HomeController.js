@@ -28,9 +28,13 @@ angular.module('AngularScaffold.Controllers')
       $state.go('home');
     };
 
-  $scope.goFactura = function(){
-    $state.go('factura');
-  }
+    $scope.goEstadisticas = function(){
+      $state.go('estadisticas');
+    };
+
+    $scope.goFactura = function(){
+      $state.go('factura');
+    };
 
     $scope.goService = function(){
         $state.go('services');
@@ -92,7 +96,6 @@ angular.module('AngularScaffold.Controllers')
         $state.go('service',{content:{searched_value:searched_value}},{ reload: true });
     };
     $scope.isAdmin = function(){
-      console.log($sessionStorage.currentUser)
       return $sessionStorage.currentUser && $sessionStorage.currentUser.scope.indexOf('admin') > -1;
     }
 
@@ -104,7 +107,6 @@ angular.module('AngularScaffold.Controllers')
       return $sessionStorage.currentUser && $sessionStorage.currentUser.scope.indexOf('cliente') > -1;
     }
     $scope.isLogged= function(){
-      console.log($scope.$sessionStorage);
       return $scope.$sessionStorage.currentUser;
     }
   }]);

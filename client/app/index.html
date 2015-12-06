@@ -68,7 +68,7 @@
                       <a class="btn btn-link" ng-click = "goContact()">Contáctenos</a>
                   </li>
                   <li ng-cloak ng-show="isVendedor()">
-                      <a class="btn" ng-click="goGestionProductos()">Factura</a>
+                      <a class="btn" ng-click="goFactura()">Factura</a>
                   </li>
                   <li class="dropdown" ng-cloak ng-show="isAdmin()">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administración<b class="caret"></b></a>
@@ -83,7 +83,7 @@
                               <a class="btn" ng-click="goFactura()">Factura</a>
                           </li>
                           <li>
-                              <a class="btn"  href="#">Estadísticas</a>
+                              <a class="btn"  ng-click="goEstadisticas()">Estadísticas</a>
                           </li>
 
                       </ul>
@@ -147,11 +147,14 @@
   <script src="scripts/controllers/CatalogController.js"></script>
   <script src="scripts/controllers/AddUsersController.js"></script>
   <script src="scripts/services/HomeService.js"></script>
-      <script src="scripts/controllers/FacturaController.js"></script>
+  <script src="scripts/controllers/FacturaController.js"></script>
+  <script src="scripts/controllers/StatsController.js"></script>
+
   <!-- endinject -->
 
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
+  <script src="scripts/controllers/highcharts.js"></script>
 
   <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>
